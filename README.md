@@ -1,6 +1,13 @@
 # 🎧 VibeFinder 2.0 — AI-Powered Music Recommender with RAG & Reliability Testing
 
-> **A production-ready simulation of a music recommendation system featuring Retrieval-Augmented Generation (RAG), multi-mode scoring, diversity controls, and a comprehensive reliability testing dashboard.**
+## Video Recording
+
+'''
+https://drive.google.com/file/d/1BaOUWwohA-JJ20-cP-WITda0tiD2_qhP/view?usp=sharing
+'''
+
+
+## production-ready simulation of a music recommendation system featuring Retrieval-Augmented Generation (RAG), multi-mode scoring, diversity controls, and a comprehensive reliability testing dashboard.**
 
 ---
 
