@@ -1,0 +1,164 @@
+{
+  "artists": [
+    {
+      "name": "Neon Echo",
+      "genre": ["pop", "synthwave"],
+      "description": "Neon Echo is a synth-pop duo known for blending retro 80s synthesizers with modern pop hooks. Their music evokes neon-lit cityscapes and midnight drives. They specialize in moody, energetic tracks that bridge pop accessibility with synthwave nostalgia.",
+      "signature_sound": "Gated reverb drums, analog synth arpeggios, vocal reverb, dark pop melodies",
+      "best_for_moods": ["moody", "happy", "confident", "euphoric"],
+      "energy_typical": 0.78,
+      "valence_typical": 0.66,
+      "notable_tracks": ["Sunrise City", "Night Drive Loop"]
+    },
+    {
+      "name": "LoRoom",
+      "genre": ["lofi"],
+      "description": "LoRoom is a lofi hip hop producer collective specializing in dusty, sample-based beats with warm piano loops and nostalgic vinyl crackle. Their tracks are designed for focus, study, and late-night contemplation.",
+      "signature_sound": "Vinyl crackle, soft piano loops, muffled drums, ambient background noise",
+      "best_for_moods": ["chill", "focused", "nostalgic", "relaxed"],
+      "energy_typical": 0.41,
+      "valence_typical": 0.57,
+      "notable_tracks": ["Midnight Coding", "Focus Flow"]
+    },
+    {
+      "name": "Voltline",
+      "genre": ["rock"],
+      "description": "Voltline is an alternative rock band with thunderous guitars and anthemic choruses. They channel raw energy and emotional intensity into every track. Their sound is built for adrenaline and catharsis.",
+      "signature_sound": "Distorted electric guitars, powerful drumming, soaring vocals, driving bass",
+      "best_for_moods": ["intense", "aggressive", "confident", "euphoric"],
+      "energy_typical": 0.91,
+      "valence_typical": 0.48,
+      "notable_tracks": ["Storm Runner"]
+    },
+    {
+      "name": "Orbit Bloom",
+      "genre": ["ambient"],
+      "description": "Orbit Bloom creates immersive ambient soundscapes inspired by space, nature, and meditative states. Their music dissolves boundaries between sound and silence, ideal for deep focus and relaxation.",
+      "signature_sound": "Pads, reverb-drenched textures, field recordings, minimal percussion",
+      "best_for_moods": ["chill", "relaxed", "reflective", "focused"],
+      "energy_typical": 0.28,
+      "valence_typical": 0.65,
+      "notable_tracks": ["Spacewalk Thoughts"]
+    },
+    {
+      "name": "Slow Stereo",
+      "genre": ["jazz"],
+      "description": "Slow Stereo is a jazz trio blending classic standards with modern lounge aesthetics. They specialize in warm, intimate performances that feel like a private concert in a dimly lit jazz club.",
+      "signature_sound": "Brushed drums, upright bass, soft piano, warm saxophone",
+      "best_for_moods": ["relaxed", "soulful", "nostalgic", "romantic"],
+      "energy_typical": 0.37,
+      "valence_typical": 0.71,
+      "notable_tracks": ["Coffee Shop Stories"]
+    },
+    {
+      "name": "Indigo Parade",
+      "genre": ["indie pop"],
+      "description": "Indigo Parade crafts melodic, guitar-driven indie pop with introspective lyrics and jangly arrangements. Their music balances melancholy with optimism, creating emotionally resonant anthems.",
+      "signature_sound": "Jangly guitars, melodic basslines, warm vocals, indie production",
+      "best_for_moods": ["happy", "reflective", "nostalgic", "uplifting"],
+      "energy_typical": 0.76,
+      "valence_typical": 0.81,
+      "notable_tracks": ["Rooftop Lights"]
+    },
+    {
+      "name": "Solara",
+      "genre": ["R&B"],
+      "description": "Solara is an R&B vocalist and producer combining smooth harmonies with modern electronic production. Her music explores love, self-worth, and late-night intimacy with lush sonic textures.",
+      "signature_sound": "Layered vocals, smooth synth bass, trap-influenced drums, warm pads",
+      "best_for_moods": ["soulful", "romantic", "confident", "uplifting"],
+      "energy_typical": 0.65,
+      "valence_typical": 0.72,
+      "notable_tracks": ["Golden Hour Groove"]
+    },
+    {
+      "name": "Block Theory",
+      "genre": ["hip-hop"],
+      "description": "Block Theory is a conscious hip-hop collective known for sharp lyricism, boom-bap beats, and storytelling that captures urban life. They blend old-school authenticity with contemporary flows.",
+      "signature_sound": "Boom-bap drums, soul samples, punchy bass, clever wordplay",
+      "best_for_moods": ["confident", "reflective", "intense", "nostalgic"],
+      "energy_typical": 0.78,
+      "valence_typical": 0.68,
+      "notable_tracks": ["Concrete Jungle"]
+    },
+    {
+      "name": "Viktor Klas",
+      "genre": ["classical"],
+      "description": "Viktor Klas is a contemporary classical composer writing minimalist, emotionally evocative piano and string pieces. His work bridges modern minimalism with romantic-era emotional depth.",
+      "signature_sound": "Solo piano, string quartets, minimal arrangements, emotional dynamics",
+      "best_for_moods": ["melancholy", "relaxed", "reflective", "focused"],
+      "energy_typical": 0.22,
+      "valence_typical": 0.30,
+      "notable_tracks": ["Adagio for Rain"]
+    },
+    {
+      "name": "Sage & Cedar",
+      "genre": ["country"],
+      "description": "Sage & Cedar is an Americana duo weaving folk storytelling with country warmth. Their acoustic-driven songs explore rural life, heartbreak, and the beauty of simple moments.",
+      "signature_sound": "Acoustic guitar, harmonica, close vocal harmonies, warm production",
+      "best_for_moods": ["nostalgic", "reflective", "happy", "melancholy"],
+      "energy_typical": 0.50,
+      "valence_typical": 0.62,
+      "notable_tracks": ["Dusty Road Home"]
+    },
+    {
+      "name": "Crimson Forge",
+      "genre": ["metal"],
+      "description": "Crimson Forge is a progressive metal band pushing technical boundaries with complex time signatures, blistering solos, and dark cinematic themes. Their music is a sonic assault on the senses.",
+      "signature_sound": "Down-tuned guitars, double-kick drums, growled vocals, orchestral layers",
+      "best_for_moods": ["aggressive", "intense", "epic", "empowering"],
+      "energy_typical": 0.97,
+      "valence_typical": 0.35,
+      "notable_tracks": ["Iron Dawn"]
+    },
+    {
+      "name": "Coral Sound",
+      "genre": ["reggae"],
+      "description": "Coral Sound brings island warmth with roots reggae rhythms, positive messages, and sun-soaked melodies. Their music is a sonic vacation promoting peace, love, and unity.",
+      "signature_sound": "Offbeat guitar skank, walking bass, organ, warm horns",
+      "best_for_moods": ["uplifting", "happy", "relaxed", "spiritual"],
+      "energy_typical": 0.55,
+      "valence_typical": 0.82,
+      "notable_tracks": ["Island Breeze"]
+    },
+    {
+      "name": "Hollow Creek",
+      "genre": ["folk"],
+      "description": "Hollow Creek is a folk singer-songwriter project rooted in Appalachian traditions. Fingerpicked acoustic guitars, storytelling lyrics, and natural imagery create an intimate connection with listeners.",
+      "signature_sound": "Fingerpicked guitar, harmonica, raw vocals, natural reverb",
+      "best_for_moods": ["reflective", "nostalgic", "melancholy", "relaxed"],
+      "energy_typical": 0.30,
+      "valence_typical": 0.55,
+      "notable_tracks": ["Whisper in the Pines"]
+    },
+    {
+      "name": "DJ Flux",
+      "genre": ["EDM"],
+      "description": "DJ Flux is an electronic dance music producer known for explosive drops, festival-ready anthems, and euphoric energy. Their tracks are built for massive sound systems and peak-hour dance floors.",
+      "signature_sound": "Massive synth leads, heavy sidechain, build-ups and drops, four-on-the-floor kicks",
+      "best_for_moods": ["euphoric", "confident", "happy", "intense"],
+      "energy_typical": 0.95,
+      "valence_typical": 0.90,
+      "notable_tracks": ["Neon Pulse"]
+    },
+    {
+      "name": "Max Pulse",
+      "genre": ["pop"],
+      "description": "Max Pulse is a high-energy pop producer creating gym-friendly bangers with massive hooks and driving beats. Their music is engineered for maximum motivation and physical exertion.",
+      "signature_sound": "Heavy kick drums, shouted vocals, synth stabs, high BPM",
+      "best_for_moods": ["intense", "confident", "happy", "aggressive"],
+      "energy_typical": 0.93,
+      "valence_typical": 0.77,
+      "notable_tracks": ["Gym Hero"]
+    },
+    {
+      "name": "Paper Lanterns",
+      "genre": ["lofi"],
+      "description": "Paper Lanterns crafts delicate, rain-soaked lofi beats with Asian-influenced melodies and gentle textures. Their music feels like a warm cup of tea on a rainy afternoon.",
+      "signature_sound": "Soft piano, rain sounds, gentle beats, Eastern-influenced melodies",
+      "best_for_moods": ["chill", "focused", "reflective", "relaxed"],
+      "energy_typical": 0.35,
+      "valence_typical": 0.60,
+      "notable_tracks": ["Library Rain"]
+    }
+  ]
+}

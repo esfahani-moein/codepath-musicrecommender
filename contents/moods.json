@@ -1,0 +1,144 @@
+{
+  "moods": [
+    {
+      "name": "happy",
+      "description": "Upbeat, joyful music with bright melodies, major keys, and energetic rhythms. Happy music often features high valence, moderate to high energy, and danceable grooves. It elevates mood and is suitable for workouts, parties, and morning routines.",
+      "recommended_genres": ["pop", "EDM", "indie pop", "reggae"],
+      "energy_range": "0.6-0.95",
+      "valence_range": "0.7-1.0",
+      "activity_contexts": ["working out", "parties", "morning routines", "social gatherings", "driving"],
+      "acoustic_preference": "either",
+      "playlist_examples": ["Feel Good Pop", "Sunny Day Vibes", "Happy Hits", "Weekend Energy"]
+    },
+    {
+      "name": "chill",
+      "description": "Relaxed, easygoing music with laid-back grooves, soft textures, and low intensity. Chill music prioritizes atmosphere over energy. It creates a calming environment suitable for unwinding after work or casual socializing.",
+      "recommended_genres": ["lofi", "ambient", "jazz", "reggae"],
+      "energy_range": "0.1-0.5",
+      "valence_range": "0.4-0.75",
+      "activity_contexts": ["studying", "reading", "evening relaxation", "coffee shops", "casual hangouts"],
+      "acoustic_preference": "acoustic preferred",
+      "playlist_examples": ["Chill Vibes", "Lofi Beats", "Soft Jazz", "Ambient Focus"]
+    },
+    {
+      "name": "intense",
+      "description": "High-energy, aggressive, or powerfully emotional music designed to pump up adrenaline. Intense music features heavy instrumentation, fast tempos, driving rhythms, and strong emotional delivery. Ideal for motivation and cathartic release.",
+      "recommended_genres": ["rock", "metal", "EDM", "hip-hop"],
+      "energy_range": "0.75-1.0",
+      "valence_range": "0.3-0.7",
+      "activity_contexts": ["working out", "competitive sports", "gaming", "manual labor", "anger release"],
+      "acoustic_preference": "electric preferred",
+      "playlist_examples": ["Heavy Hitter", "Adrenaline Rush", "Beast Mode", "Power Workout"]
+    },
+    {
+      "name": "relaxed",
+      "description": "Soft, soothing music with gentle dynamics and peaceful atmospheres. Relaxed music often features acoustic instruments, slow tempos, and minimal arrangements. It is designed to reduce stress and promote tranquility.",
+      "recommended_genres": ["jazz", "ambient", "folk", "classical"],
+      "energy_range": "0.1-0.5",
+      "valence_range": "0.3-0.8",
+      "activity_contexts": ["meditation", "yoga", "sleep", "spa", "deep work", "reading"],
+      "acoustic_preference": "strongly acoustic",
+      "playlist_examples": ["Deep Relaxation", "Peaceful Piano", "Jazz for Sleep", "Ambient Dreams"]
+    },
+    {
+      "name": "moody",
+      "description": "Atmospheric, introspective music with emotional complexity and darker tones. Moody music balances beauty with melancholy, often featuring minor keys, reverb, and cinematic textures. It resonates with introspective and creative states.",
+      "recommended_genres": ["synthwave", "ambient", "indie pop", "jazz"],
+      "energy_range": "0.3-0.8",
+      "valence_range": "0.2-0.6",
+      "activity_contexts": ["late night driving", "creative writing", "rainy days", "introspection", "film watching"],
+      "acoustic_preference": "either",
+      "playlist_examples": ["Midnight Thoughts", "Dark & Stormy", "Melancholy Moods", "Neon Noir"]
+    },
+    {
+      "name": "focused",
+      "description": "Minimal-distraction music designed to enhance concentration and productivity. Focused music typically has steady, unobtrusive patterns, no lyrics, and consistent energy without dramatic shifts.",
+      "recommended_genres": ["lofi", "ambient", "classical", "jazz"],
+      "energy_range": "0.2-0.5",
+      "valence_range": "0.4-0.7",
+      "activity_contexts": ["coding", "studying", "deep work", "writing", "problem solving"],
+      "acoustic_preference": "instrumental preferred",
+      "playlist_examples": ["Deep Focus", "Coding Beats", "Study Session", "Brain Food"]
+    },
+    {
+      "name": "soulful",
+      "description": "Emotionally rich music with expressive vocals, warm instrumentation, and themes of love, longing, and human experience. Soulful music emphasizes feeling and authenticity over technical flashiness.",
+      "recommended_genres": ["R&B", "jazz", "soul", "folk", "reggae"],
+      "energy_range": "0.3-0.75",
+      "valence_range": "0.4-0.8",
+      "activity_contexts": ["cooking", "intimate dinners", "self-reflection", "creative work", "evening wind-down"],
+      "acoustic_preference": "either",
+      "playlist_examples": ["Soulful Sundays", "Heartfelt", "Slow Jams", "Velvet Vibes"]
+    },
+    {
+      "name": "confident",
+      "description": "Bold, swagger-filled music with strong beats, assertive delivery, and empowering themes. Confident music boosts self-assurance and is designed to make the listener feel unstoppable.",
+      "recommended_genres": ["hip-hop", "pop", "rock", "EDM"],
+      "energy_range": "0.6-0.95",
+      "valence_range": "0.5-0.85",
+      "activity_contexts": ["public speaking prep", "interviews", "presentations", "pre-game", "motivation"],
+      "acoustic_preference": "electric preferred",
+      "playlist_examples": ["Confidence Boost", "Hustle Hard", "Boss Mode", "Power Anthems"]
+    },
+    {
+      "name": "melancholy",
+      "description": "Sad, wistful music that explores themes of loss, longing, and bittersweet beauty. Melancholy music can be cathartic and comforting, providing emotional release and validation.",
+      "recommended_genres": ["classical", "folk", "indie pop", "ambient"],
+      "energy_range": "0.1-0.5",
+      "valence_range": "0.1-0.5",
+      "activity_contexts": ["processing emotions", "rainy days", "journaling", "healing", "nostalgic reflection"],
+      "acoustic_preference": "acoustic preferred",
+      "playlist_examples": ["Sad Songs", "Melancholy Mix", "Rainy Day", "Tearjerkers"]
+    },
+    {
+      "name": "nostalgic",
+      "description": "Music that evokes memories, past experiences, and sentimental longing. Nostalgic music often features familiar sounds, vintage production, or personal associations that transport listeners through time.",
+      "recommended_genres": ["country", "folk", "synthwave", "classic rock"],
+      "energy_range": "0.2-0.7",
+      "valence_range": "0.3-0.75",
+      "activity_contexts": ["reminiscing", "road trips", "family gatherings", "photo browsing", "holiday seasons"],
+      "acoustic_preference": "either",
+      "playlist_examples": ["Throwback", "Nostalgic Hits", "Time Machine", "Memory Lane"]
+    },
+    {
+      "name": "aggressive",
+      "description": "Confrontational, high-intensity music with distorted sounds, rapid tempos, and confrontational themes. Aggressive music channels anger and frustration into powerful sonic expressions.",
+      "recommended_genres": ["metal", "hard rock", "hip-hop", "EDM"],
+      "energy_range": "0.8-1.0",
+      "valence_range": "0.2-0.6",
+      "activity_contexts": ["intense workouts", "martial arts", "competitive gaming", "stress release"],
+      "acoustic_preference": "electric required",
+      "playlist_examples": ["Rage Room", "Heavy Metal Workout", "Aggro Mix", "Fight Mode"]
+    },
+    {
+      "name": "uplifting",
+      "description": "Inspiring, hope-filled music with anthemic choruses, crescendos, and messages of resilience. Uplifting music is designed to elevate spirits and motivate positive action.",
+      "recommended_genres": ["pop", "reggae", "EDM", "indie pop", "R&B"],
+      "energy_range": "0.5-0.9",
+      "valence_range": "0.6-0.95",
+      "activity_contexts": ["morning motivation", "overcoming challenges", "charity events", "team building", "celebrations"],
+      "acoustic_preference": "either",
+      "playlist_examples": ["Uplifting Anthems", "Good Vibes Only", "Rise Up", "Inspiration Station"]
+    },
+    {
+      "name": "reflective",
+      "description": "Contemplative, thought-provoking music that encourages introspection and philosophical thinking. Reflective music balances emotional depth with intellectual engagement.",
+      "recommended_genres": ["folk", "jazz", "ambient", "classical"],
+      "energy_range": "0.15-0.55",
+      "valence_range": "0.3-0.7",
+      "activity_contexts": ["journaling", "philosophical reading", "nature walks", "sunrise/sunset", "life transitions"],
+      "acoustic_preference": "acoustic preferred",
+      "playlist_examples": ["Reflective Minds", "Contemplative", "Inner Journey", "Quiet Thoughts"]
+    },
+    {
+      "name": "euphoric",
+      "description": "Ecstatic, transcendent music designed to induce peak emotional experiences and collective joy. Euphoric music features soaring melodies, massive drops, and overwhelming positive energy.",
+      "recommended_genres": ["EDM", "pop", "trance", "anthem rock"],
+      "energy_range": "0.8-1.0",
+      "valence_range": "0.8-1.0",
+      "activity_contexts": ["festivals", "raves", "celebrations", "milestones", "dance floors"],
+      "acoustic_preference": "electric required",
+      "playlist_examples": ["Euphoria", "Peak Moments", "Festival Anthems", "Pure Bliss"]
+    }
+  ]
+}

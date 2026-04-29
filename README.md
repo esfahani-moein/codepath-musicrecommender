@@ -1,147 +1,322 @@
-# 🎵 Music Recommender Simulation
+# 🎧 VibeFinder 2.0 — AI-Powered Music Recommender with RAG & Reliability Testing
 
-## Project Summary
+> **A production-ready simulation of a music recommendation system featuring Retrieval-Augmented Generation (RAG), multi-mode scoring, diversity controls, and a comprehensive reliability testing dashboard.**
 
-VibeFinder 1.0 is a content-based music recommender that scores songs against a user's taste profile using weighted feature matching. It loads a catalog of 18 songs from CSV, computes a similarity score for each song based on genre, mood, energy, valence, danceability, and acousticness, then ranks and returns the top-k recommendations with human-readable explanations.
+---
+
+## What's New in VibeFinder 2.0
+
+This release is a complete redesign of the original recommender. Every core component has been upgraded with AI features, richer context, and measurable reliability.
+
+### 1. Retrieval-Augmented Generation (RAG) Engine
+
+Instead of only matching raw CSV features, the system now queries a **music knowledge base** before making recommendations. The knowledge base lives in `contents/` and includes:
+
+- **`genres.json`** — Detailed descriptions, typical energy/valence ranges, related genres, key instruments, origins, and cultural notes for 15 genres.
+- **`moods.json`** — Mood definitions, recommended genres, energy/valence ranges, activity contexts, and playlist examples for 14 moods.
+- **`artists.json`** — Artist profiles with signature sounds, typical feature values, best-fit moods, and notable tracks.
+- **`suggestions.json`** — Contextual suggestion cards for activities like "Gym & Workout," "Study & Work," "Evening Wind Down," and "Rainy Day Contemplation."
+
+**How RAG works:** When a user asks for recommendations, the system:
+1. Builds a TF-IDF index over all knowledge documents using `sklearn`.
+2. Retrieves the most relevant genre, mood, artist, and suggestion documents for the user's query.
+3. Uses retrieved knowledge to enable **fuzzy genre matching** (e.g., "indie pop" partially matches "pop") and **mood-genre alignment bonuses**.
+4. Enriches every recommendation explanation with cultural context from the knowledge base.
+
+### 2. Enhanced Recommendation Engine (`src/recommender_v2.py`)
+
+- **Fuzzy Genre Matching**: Exact matches still get full points, but related genres (discovered via RAG) now earn partial credit.
+- **RAG-Enhanced Scoring Mode**: A dedicated mode that balances all signals while rewarding genre-mood alignments validated by the knowledge base.
+- **Diversity Penalty**: Prevents the top-k list from being dominated by a single artist or genre.
+- **Novelty Boost**: Rewards genre/artist variety in recommendation lists.
+- **Five Scoring Modes**: `balanced`, `genre_first`, `mood_first`, `energy_focused`, `rag_enhanced`.
+
+### 3. Reliability & Testing System (`src/evaluation.py`)
+
+A full quantitative testing suite to measure and compare recommender performance:
+
+| Metric | Description |
+|--------|-------------|
+| **Intra-List Diversity** | Average pairwise Euclidean distance between recommended songs (higher = more varied) |
+| **Relevance Score** | Normalized alignment of top-k results to user genre, mood, energy, and valence |
+| **Catalog Coverage** | Percentage of the catalog that appears across all recommendation runs |
+| **Genre Coverage** | Percentage of all genres represented across recommendations |
+| **Novelty Score** | Jaccard distance comparing a mode's output to a baseline (higher = more different) |
+| **Consistency** | Standard deviation of relevance scores across modes for the same profile |
+| **A/B Testing** | Side-by-side comparison of two scoring modes with automatic winner selection |
+| **Full System Audit** | End-to-end audit across all profiles and modes with a printable report |
+
+### 4. Fancy Streamlit Dashboard (`app.py`)
+
+A dark-themed, multi-tab interactive UI replacing the original CLI output:
+
+- **🎯 Smart Recommender** — Build your vibe profile with sliders and dropdowns, toggle RAG enrichment, choose scoring modes, and see real-time recommendations with knowledge context.
+- **🔍 RAG Explorer** — Search the knowledge base interactively and browse genres, moods, artists, and suggestions by category.
+- **🧪 Testing & Reliability** — Run evaluations, view bar charts of diversity/relevance per profile, run A/B tests, and print a full system audit.
+- **🎼 Catalog Browser** — Filter the song catalog by genre/mood/energy, explore a scatter plot of the song landscape, and view rich knowledge context per track.
+- **🎭 Preset Profiles** — Try five built-in personas (High-Energy Pop, Chill Lofi, Deep Intense Rock, Conflicting Profile, Acoustic Jazz Lover) with side-by-side mode comparisons.
+
+### 5. Comprehensive Test Suite
+
+Tests are split across three modules:
+
+- `tests/test_recommender.py` — Original tests (backward compatible)
+- `tests/test_recommender_v2.py` — Tests for fuzzy matching, RAG-enhanced scoring, diversity penalties, and the new `Recommender` class
+- `tests/test_rag_engine.py` — Tests for TF-IDF retrieval, knowledge base loading, related genres, and mood guidance
+- `tests/test_evaluation.py` — Tests for diversity, coverage, relevance, novelty, A/B testing, and system audits
+
+---
+
+## Project Structure
+
+```
+project05_codepath_music_recommender/
+├── app.py                          # Fancy Streamlit dashboard (main entry point)
+├── src/
+│   ├── main.py                     # Original CLI runner (still works)
+│   ├── recommender.py              # Original v1 scoring logic (preserved)
+│   ├── recommender_v2.py           # Enhanced v2 with RAG, fuzzy matching, 5 modes
+│   ├── rag_engine.py               # TF-IDF retrieval over contents/ knowledge base
+│   └── evaluation.py               # Diversity, relevance, coverage, A/B testing, audits
+├── tests/
+│   ├── test_recommender.py         # Original v1 tests
+│   ├── test_recommender_v2.py      # v2 + RAG tests
+│   ├── test_rag_engine.py          # Knowledge base retrieval tests
+│   └── test_evaluation.py          # Reliability system tests
+├── contents/
+│   ├── genres.json                 # 15 genre knowledge documents
+│   ├── moods.json                  # 14 mood knowledge documents
+│   ├── artists.json                # 16 artist knowledge documents
+│   └── suggestions.json            # 10 activity suggestion cards
+├── data/
+│   └── songs.csv                   # 18-track catalog
+├── conftest.py                     # pytest path setup
+├── requirements.txt                # Python dependencies
+├── model_card.md                   # Model card for v1 (preserved)
+├── reflection.md                   # Original reflection (preserved)
+└── README.md                       # This file
+```
 
 ---
 
 ## How The System Works
 
-Real-world recommender systems (like Spotify or YouTube) use massive datasets, collaborative filtering ("users like you also liked..."), and deep learning models. Our simulation simplifies this to a **content-based** approach: we compare the features of each song directly to the user's stated preferences and assign a numeric score.
+### VibeFinder 2.0 Architecture
 
-### Features Used
+```
+User Prefs ──┬──► [RAG Engine] ──► Retrieve genre/mood/artist/suggestion docs
+             │                           │
+             │                           ▼
+             │                    Enrich user profile
+             │                    (related genres, mood guidance)
+             │                           │
+             └──► [Recommender v2] ◄─────┘
+                          │
+                          ▼
+              For each song: score_song_rag()
+                 - exact genre match
+                 - related genre match (via RAG)
+                 - mood match
+                 - energy/valence/dance similarity
+                 - acoustic bonus
+                 - RAG mood-genre alignment bonus
+                          │
+                          ▼
+              Apply diversity / novelty modifiers
+                          │
+                          ▼
+              Sort & return Top K + explanations + knowledge context
+```
+
+### RAG Retrieval Pipeline
+
+```
+Knowledge Documents (contents/*.json)
+         │
+         ▼
+    Flatten to text strings
+         │
+         ▼
+    TF-IDF Vectorizer (sklearn)
+         │
+         ▼
+    Sparse Document Matrix
+         │
+    ┌─────────────────┐
+    │  User Query     │
+    └────────┬────────┘
+             ▼
+    Cosine Similarity
+             │
+             ▼
+    Top-K Retrieved Documents
+             │
+    ┌────────┴────────┐
+    ▼                 ▼
+Related Genres    Mood Guidance
+```
+
+---
+
+## Features Used
 
 **Song features** (from `data/songs.csv`):
 - `genre` — categorical (pop, lofi, rock, ambient, jazz, synthwave, indie pop, R&B, hip-hop, classical, country, metal, reggae, folk, EDM)
 - `mood` — categorical (happy, chill, intense, relaxed, moody, focused, soulful, confident, melancholy, nostalgic, aggressive, uplifting, reflective, euphoric)
-- `energy` — numerical 0.0–1.0 (intensity level)
-- `valence` — numerical 0.0–1.0 (musical positivity)
-- `danceability` — numerical 0.0–1.0 (rhythmic suitability for dancing)
-- `acousticness` — numerical 0.0–1.0 (organic vs. electronic sound)
+- `energy` — numerical 0.0–1.0
+- `valence` — numerical 0.0–1.0
+- `danceability` — numerical 0.0–1.0
+- `acousticness` — numerical 0.0–1.0
 
-**UserProfile stores**:
-- `favorite_genre` — target genre string
-- `favorite_mood` — target mood string
-- `target_energy` — preferred energy level (0.0–1.0)
-- `target_valence` — preferred valence level (0.0–1.0)
-- `target_danceability` — preferred danceability (0.0–1.0)
-- `likes_acoustic` — boolean flag for acoustic preference
+**Scoring Modes (`SCORING_MODES`)**:
 
-### Algorithm Recipe (Scoring Rule)
-
-For each song, the system computes a score using these rules:
-
-| Rule | Points | Description |
-|------|--------|-------------|
-| Genre match | +2.0 | Exact genre string match |
-| Mood match | +1.0 | Exact mood string match |
-| Energy similarity | up to +1.5 | `(1 - \|song_energy - target_energy\|) × 1.5` |
-| Valence similarity | up to +0.5 | `(1 - \|song_valence - target_valence\|) × 0.5` |
-| Danceability similarity | up to +0.5 | `(1 - \|song_dance - target_dance\|) × 0.5` |
-| Acoustic bonus | +0.5 | If user likes acoustic AND song acousticness > 0.5 |
-
-**Maximum possible score**: ~6.0 (all matches + perfect numerical alignment + acoustic bonus)
-
-### Ranking Rule
-
-After scoring every song, the system sorts all songs by score in descending order and returns the top-k results. We use `sorted()` (returns a new list) rather than `.sort()` (mutates in-place) to preserve the original catalog.
-
-### Data Flow
-
-```
-User Prefs → [Loop over all songs] → score_song() → (score, reasons) → Sort descending → Top K Recommendations
-```
-
-```mermaid
-flowchart LR
-    A[User Profile] --> B[Load Songs from CSV]
-    B --> C[For each song: score_song]
-    C --> D[Genre match? +2.0]
-    C --> E[Mood match? +1.0]
-    C --> F[Energy similarity up to 1.5]
-    C --> G[Valence/Dance similarity up to 1.0]
-    C --> H[Acoustic bonus +0.5]
-    D & E & F & G & H --> I[Total Score + Reasons]
-    I --> J[Sort all songs by score]
-    J --> K[Return Top K]
-```
-
-### Potential Biases
-
-- **Genre dominance**: At +2.0 points, a genre match can override all other features, causing the system to recommend songs that match genre but feel wrong in mood or energy.
-- **Catalog imbalance**: With 3 lofi songs and only 1 each of classical/metal/reggae/folk, the system has more opportunities to match lofi preferences.
-- **Binary matching**: Genre and mood are exact-match only — "indie pop" won't match "pop" even though they're related.
+| Mode | Genre | Mood | Energy | Related Genre | Best For |
+|------|-------|------|--------|---------------|----------|
+| `balanced` | 2.0 | 1.0 | 1.5 | 1.0 | General use |
+| `genre_first` | 3.0 | 0.5 | 1.0 | 1.5 | Genre loyalists |
+| `mood_first` | 0.5 | 3.0 | 1.0 | 0.3 | Mood explorers |
+| `energy_focused` | 1.0 | 0.5 | 3.0 | 0.5 | Activity-based |
+| `rag_enhanced` | 1.5 | 1.5 | 1.5 | 1.5 | AI-guided discovery |
 
 ---
 
 ## Getting Started
 
+### Prerequisites
+
+- Python 3.10+
+- Conda environment named `quantenv` with dependencies pre-installed
+
 ### Setup
 
-1. Activate the conda environment:
+1. Activate the environment:
 
    ```bash
    conda activate quantenv
    ```
 
-2. Run the app:
+2. Install dependencies (if not already present):
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Run the Streamlit Dashboard
+
+```bash
+streamlit run app.py
+```
+
+The dashboard will open in your browser at `http://localhost:8501`.
+
+### Run the Original CLI
 
 ```bash
 python -m src.main
 ```
 
-### Running Tests
+### Run Tests
 
-Run the starter tests with:
+Run the full test suite:
 
 ```bash
 pytest
 ```
 
-You can add more tests in `tests/test_recommender.py`.
+Run specific test modules:
+
+```bash
+pytest tests/test_rag_engine.py -v
+pytest tests/test_evaluation.py -v
+pytest tests/test_recommender_v2.py -v
+```
 
 ---
 
-## Experiments You Tried
+## RAG Knowledge Base Demo
 
-### Experiment 1: Weight Shift — Double Energy, Half Genre
+You can inspect the knowledge base directly:
 
-We doubled the energy weight (1.5→3.0 multiplier) and halved the genre weight (2.0→1.0) for the "Pop/Happy" profile.
+```python
+from src.rag_engine import MusicKnowledgeBase
 
-**Result**: "Rooftop Lights" (indie pop, happy, energy=0.76) jumped from #3 to #2, while "Gym Hero" (pop, intense, energy=0.93) dropped from #2 to #3. The higher energy weight rewarded songs with closer energy values, even without a genre match. This shows that genre dominance can mask energy mismatches — "Gym Hero" is pop but its intense mood doesn't fit a "happy" profile, yet the original genre bonus pushed it above mood-matching songs.
+kb = MusicKnowledgeBase("contents")
 
-### Experiment 2: Diverse Profile Testing
+# What genres are related to pop?
+print(kb.get_related_genres("pop"))
+# ['electropop', 'indie pop', 'synthwave']
 
-We tested 5 distinct profiles:
+# What does the AI know about the "chill" mood?
+print(kb.get_mood_recommendations("chill"))
+# {'recommended_genres': ['lofi', 'ambient', 'jazz', 'reggae'],
+#  'energy_range': '0.1-0.5', ... }
 
-- **High-Energy Pop**: Correctly surfaces "Sunrise City" and "Gym Hero" — both pop, high energy.
-- **Chill Lofi**: Correctly surfaces "Library Rain" and "Midnight Coding" — both lofi, chill, low energy, acoustic.
-- **Deep Intense Rock**: Correctly surfaces "Storm Runner" as #1 (rock, intense, high energy).
-- **Conflicting Profile (High Energy + Sad)**: This adversarial case shows the tension — lofi genre match pulls in low-energy songs, while the mood "intense" and high energy target favor rock/pop. The lofi genre bonus dominates, producing recommendations that don't truly match the conflicting intent.
-- **Acoustic Jazz Lover**: Correctly surfaces "Coffee Shop Stories" (jazz, relaxed, acoustic) as #1.
-
----
-
-## Limitations and Risks
-
-- **Tiny catalog**: 18 songs is far too small for meaningful recommendations; real systems use millions.
-- **No collaborative filtering**: We only compare features, not "users who liked X also liked Y."
-- **Binary categorical matching**: Genre and mood must match exactly — "indie pop" ≠ "pop", "chill" ≠ "relaxed".
-- **Genre weight dominance**: At +2.0, genre can override mood and energy, creating filter bubbles.
-- **No temporal awareness**: The system doesn't consider listening history or variety in recommendations.
-- **No lyrics or cultural context**: The system is deaf to language, themes, or cultural significance.
-
-See [model_card.md](model_card.md) for a deeper analysis.
+# Retrieve documents for a user query
+results = kb.retrieve("happy energetic pop workout", top_k=3)
+for r in results:
+    print(f"[{r.doc_type}] {r.title} (score={r.score:.3f})")
+```
 
 ---
 
-## Reflection
+## Evaluation & Reliability Demo
 
-Read and complete `model_card.md`:
+```python
+from src.evaluation import full_system_audit, run_ab_test
+from src.recommender_v2 import load_songs
+from src.rag_engine import RAGEnrichedRecommender
 
-[**Model Card**](model_card.md)
+songs = load_songs("data/songs.csv")
+rag = RAGEnrichedRecommender()
 
-Building this recommender revealed how even simple scoring rules can produce results that "feel" like real recommendations. The biggest surprise was how the genre weight (+2.0) consistently overpowered other features — "Gym Hero" kept appearing for happy pop listeners simply because it shares the genre, even though its intense mood is a poor fit. This mirrors real-world filter bubbles where algorithmic over-weighting of one signal narrows what users see. The conflicting profile experiment was especially illuminating: when preferences contradict each other (high energy + lofi), the system defaults to whichever feature carries more weight rather than recognizing the tension. In real systems, this kind of bias could systematically ignore users with complex or evolving tastes.
+profiles = {
+    "High-Energy Pop": {"genre": "pop", "mood": "happy", "energy": 0.85, "valence": 0.8, "danceability": 0.8, "likes_acoustic": False},
+    "Chill Lofi": {"genre": "lofi", "mood": "chill", "energy": 0.35, "valence": 0.6, "danceability": 0.55, "likes_acoustic": True},
+}
 
+# Full audit across all modes
+audit = full_system_audit(profiles, songs, rag_enricher=rag)
+print(audit["catalog_coverage"])   # e.g., 0.72
+print(audit["best_mode_by_relevance"])  # e.g., "rag_enhanced"
 
+# A/B test two modes
+ab = run_ab_test(profiles, songs, mode_a="balanced", mode_b="rag_enhanced", rag_enricher_b=rag)
+print(ab.winner_overall)  # "rag_enhanced"
+```
+
+---
+
+## Key Design Decisions
+
+1. **TF-IDF over dense embeddings**: We use `sklearn.feature_extraction.text.TfidfVectorizer` + cosine similarity instead of sentence transformers. This keeps the system lightweight, CPU-only, and fully compatible with the `quantenv` environment without requiring GPU or large model downloads.
+
+2. **Modular RAG integration**: The RAG engine (`rag_engine.py`) is decoupled from the scorer (`recommender_v2.py`). You can swap in a dense embedding retriever (e.g., `sentence-transformers`) later without changing the scoring logic.
+
+3. **Backward compatibility**: `src/recommender.py` and `tests/test_recommender.py` remain untouched so the original CLI and all v1 tests continue to pass.
+
+4. **Declarative knowledge base**: All music knowledge is stored as structured JSON in `contents/`. This makes it easy to edit, version-control, and expand without changing code.
+
+---
+
+## Limitations and Future Work
+
+- **Catalog size**: 18 songs is a simulation. A real system would use a vector database over millions of tracks.
+- **No collaborative filtering**: We remain content-based. Adding user-item interaction data would enable hybrid recommendations.
+- **Static knowledge base**: The `contents/` JSONs are hand-authored. Future versions could generate them from Wikipedia, Spotify APIs, or LLM summaries.
+- **No listening history**: Temporal modeling and session-based recommendations are not yet implemented.
+- **No audio features**: We use metadata only. Integrating spectrogram embeddings or audio feature extraction would improve relevance.
+
+---
+
+## License
+
+MIT License — feel free to fork, extend, and publish your own music discovery tools.
+
+---
+
+## Credits
+
+- **VibeFinder 1.0**: Original content-based scoring system with weighted feature matching.
+- **VibeFinder 2.0**: RAG engine, fuzzy matching, evaluation framework, and Streamlit dashboard designed for publication and classroom exploration.
+
+Built for the CodePath AI Engineering course. Ready for GitHub.

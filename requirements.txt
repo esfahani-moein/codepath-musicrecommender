@@ -1,3 +1,6 @@
 pandas
 pytest
 streamlit
+scikit-learn
+plotly
+numpy

@@ -1,0 +1,64 @@
+{
+  "suggestions": [
+    {
+      "title": "Study and Work Sessions",
+      "description": "For coding, writing, or studying, choose lofi hip hop or ambient music with low energy and no lyrics. Focus Flow by LoRoom and Spacewalk Thoughts by Orbit Bloom are ideal. These tracks maintain a steady background atmosphere without distracting your cognitive processing. The optimal energy range is 0.2-0.45, with acoustic or instrumental preference.",
+      "keywords": ["study", "work", "focus", "coding", "lofi", "ambient", "concentration", "productivity"],
+      "example_artists": ["LoRoom", "Orbit Bloom", "Paper Lanterns"]
+    },
+    {
+      "title": "Gym and Workout Pump",
+      "description": "High-intensity exercise demands high energy, aggressive or euphoric tracks. Gym Hero by Max Pulse, Storm Runner by Voltline, and Neon Pulse by DJ Flux provide the adrenaline needed. Look for energy above 0.85, strong rhythms, and confident or intense moods. EDM, rock, and high-energy pop are the best genres.",
+      "keywords": ["gym", "workout", "exercise", "running", "fitness", "pump", "energy", "motivation"],
+      "example_artists": ["Max Pulse", "Voltline", "DJ Flux", "Crimson Forge"]
+    },
+    {
+      "title": "Evening Wind Down",
+      "description": "After a long day, decompress with jazz, acoustic folk, or soft ambient. Coffee Shop Stories by Slow Stereo and Whisper in the Pines by Hollow Creek create a warm, intimate atmosphere. Energy should be below 0.4, with acoustic preference and soulful or relaxed moods.",
+      "keywords": ["evening", "wind down", "relax", "jazz", "acoustic", "chill", "unwind", "calm"],
+      "example_artists": ["Slow Stereo", "Hollow Creek", "Sage & Cedar", "Solara"]
+    },
+    {
+      "title": "Road Trip Adventures",
+      "description": "Driving music should be uplifting, nostalgic, or confident with steady energy. Sunrise City by Neon Echo, Island Breeze by Coral Sound, and Rooftop Lights by Indigo Parade capture the freedom of the open road. Energy between 0.5-0.8 with high valence works best.",
+      "keywords": ["driving", "road trip", "travel", "adventure", "uplifting", "freedom", "car"],
+      "example_artists": ["Neon Echo", "Coral Sound", "Indigo Parade", "Block Theory"]
+    },
+    {
+      "title": "Creative Writing and Art",
+      "description": "Creative work benefits from moody, reflective, or atmospheric music that stimulates imagination without demanding attention. Night Drive Loop by Neon Echo and Adagio for Rain by Viktor Klas provide emotional texture and cinematic atmosphere. Synthwave, ambient, and classical are ideal.",
+      "keywords": ["creative", "writing", "art", "moody", "inspiration", "reflective", "cinematic", "imagination"],
+      "example_artists": ["Neon Echo", "Viktor Klas", "Orbit Bloom", "Hollow Creek"]
+    },
+    {
+      "title": "Social Gatherings and Parties",
+      "description": "Parties need high energy, danceable, and universally appealing tracks. Pop, EDM, and reggae create inclusive, joyful atmospheres. Neon Pulse by DJ Flux, Sunrise City by Neon Echo, and Island Breeze by Coral Sound keep the energy high and the mood positive.",
+      "keywords": ["party", "social", "gathering", "dance", "fun", "celebration", "friends", "weekend"],
+      "example_artists": ["DJ Flux", "Neon Echo", "Coral Sound", "Solara"]
+    },
+    {
+      "title": "Morning Routine and Wake Up",
+      "description": "Start the day with uplifting, happy music that builds energy gradually. Pop, indie pop, and reggae provide the positive vibes needed. Rooftop Lights by Indigo Parade and Island Breeze by Coral Sound are perfect morning companions.",
+      "keywords": ["morning", "wake up", "routine", "breakfast", "happy", "positive", "start day", "sunrise"],
+      "example_artists": ["Indigo Parade", "Coral Sound", "Neon Echo", "Solara"]
+    },
+    {
+      "title": "Rainy Day Contemplation",
+      "description": "Rainy days call for melancholy, reflective, or chill music that matches the weather's introspective mood. Classical, lofi, and folk excel here. Adagio for Rain by Viktor Klas, Library Rain by Paper Lanterns, and Whisper in the Pines by Hollow Creek embrace the rain.",
+      "keywords": ["rainy day", "melancholy", "rain", "contemplation", "sad", "cozy", "indoor", "weather"],
+      "example_artists": ["Viktor Klas", "Paper Lanterns", "Hollow Creek", "LoRoom"]
+    },
+    {
+      "title": "Late Night Introspection",
+      "description": "The hours after midnight invite deep thought and emotional honesty. Synthwave, ambient, and jazz create the perfect nocturnal atmosphere. Night Drive Loop by Neon Echo, Midnight Coding by LoRoom, and Coffee Shop Stories by Slow Stereo soundtrack the quiet hours.",
+      "keywords": ["late night", "midnight", "introspection", "nocturnal", "quiet", "thought", "night", "sleepy"],
+      "example_artists": ["Neon Echo", "LoRoom", "Slow Stereo", "Orbit Bloom"]
+    },
+    {
+      "title": "Confidence Boost and Interviews",
+      "description": "Before big moments, arm yourself with confident, empowering music. Hip-hop, rock, and high-energy pop provide the swagger and determination needed. Concrete Jungle by Block Theory and Gym Hero by Max Pulse are anthemic confidence builders.",
+      "keywords": ["confidence", "interview", "presentation", "motivation", "empowering", "determination", "success", "preparation"],
+      "example_artists": ["Block Theory", "Max Pulse", "Voltline", "DJ Flux"]
+    }
+  ]
+}
